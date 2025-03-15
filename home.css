@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E5B961;
+    padding: 15px;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.icons span {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.feather {
+    width: 50px;
+    height: 30px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.plant-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+}
+
+.plant-card img {
+    max-width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.plant-card p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.plant-card span {
+    font-size: 14px;
+    color: #666;
+}
+
+
+/* Modal Guide */
+.guide-modal {
+    display: none; /* Jangan langsung flex */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.guide-modal.show {
+    display: flex;
+}
+
+.guide-modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.step {
+    margin: 10px 0;
+    text-align: left;
+}
+
+#closeModal {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f0ad4e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.modal-body {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.guide-steps {
+    flex: 1;
+    text-align: left;
+}
+
+.guide-products {
+    flex: 0.5;
+    background: #fff;
+    padding: 5px;
+    border-radius: 1px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#bookmarkBtn {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    color: black;
+    transition: color 0.3s;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#startPlant {
+    padding: 10px;
+    margin-top: 10px;
+    background: #5cb85c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}

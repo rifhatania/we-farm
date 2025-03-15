@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tracker</title>
+    <link rel="stylesheet" href="track.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo wefarm.png" alt="WeFarm Logo">
+            <h1>My Tracker</h1>
+    </header>
+
+    <main>
+        <div class="calendar">
+            <h2>Februari</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="disabled">26</td><td class="disabled">27</td><td class="disabled">28</td>
+                        <td class="disabled">29</td><td class="disabled">30</td><td class="disabled">31</td><td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+                    </tr>
+                    <tr>
+                        <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td class="highlight">15</td>
+                    </tr>
+                    <tr>
+                        <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight-today">23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tracker-info">
+            <div class="plant-info">
+                <img src="" alt="Tanaman">
+                <div class="plant-details">
+                    <h3>Nama Tanaman</h3>
+                    <p><b>Start:</b> </p>
+                    <p><b>Estimated:</b> </p>
+                    <button class="problem-btn">⚠ See and fix the Problem!</button>
+                </div>
+            </div>
+
+            <div class="target">
+                <h3>Target:</h3>
+                <ul>
+                    <li><input type="checkbox"> Day 1-7: Muncul akar kecil</li>
+                    <li><input type="checkbox"> Day 7-10: Daun pertama</li>
+                    <li><input type="checkbox"> Day 10-30: Batang mengeras dan muncul 2-4 daun sejati</li>
+                </ul>
+            </div>
+
+            <div class="daily">
+                <h3>Daily:</h3>
+                <label><input type="checkbox"> Water the Plant at Morning</label><br>
+                <label><input type="checkbox"> Water the Plant at Evening</label>
+            </div>
+
+            <div class="reminder">
+                <h3>Don't Miss Out!</h3>
+                <p>⏳ <b>30 Days to Go</b></p>
+                <p>Pindahkan bibit yang sudah tumbuh 5-6 helai daun ke lahan.</p>
+            </div>
+
+            <button class="back-btn">◀ Back</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
