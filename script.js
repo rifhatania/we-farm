@@ -1,3 +1,14 @@
+// Handle Landing Page
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("login-btn").addEventListener("click", function () {
+        window.location.href = "login.html";
+    });
+
+    document.getElementById("register-btn").addEventListener("click", function () {
+        window.location.href = "signup.html";
+    });
+});
+
 // Handle Login
 document.getElementById("loginForm")?.addEventListener("submit", function(event) {
     event.preventDefault();
