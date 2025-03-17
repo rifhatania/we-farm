@@ -7,7 +7,23 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("register-btn").addEventListener("click", function () {
         window.location.href = "signup.html";
     });
+
+    let index = 0;
+    const slides = document.querySelectorAll(".slide");
+    const totalSlides = slides.length;
+    const slider = document.querySelector(".slider");
+
+    document.getElementById("next").addEventListener("click", function () {
+        index = (index + 1) % totalSlides;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    document.getElementById("prev").addEventListener("click", function () {
+        index = (index - 1 + totalSlides) % totalSlides;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+    });
 });
+
 
 // Handle Login
 document.getElementById("loginForm")?.addEventListener("submit", function(event) {
