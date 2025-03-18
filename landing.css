@@ -4,7 +4,7 @@ body {
 }
 
 .header {
-    background-color: #facc15;
+    background-color: #E5B961;
     padding: 16px;
     display: flex;
     justify-content: space-between;
@@ -67,7 +67,7 @@ body {
 }
 
 .highlight {
-    color: #facc15;
+    color: #E5B961;
 }
 
 .grid-container {
@@ -83,7 +83,7 @@ body {
 }
 
 .product-cards, .guides {
-    background-color: #fde047;
+    background-color: #E5B961;
 }
 
 .tracker {
