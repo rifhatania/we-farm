@@ -7,28 +7,42 @@
     <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-    <header>
-        <div class="logo"> 
-            <img src="logo wefarm.png" alt="WeFarm Logo"> 
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.png" alt="WeFarm Logo" class="logo">
+            <h1 class="title">WEFARM</h1>
         </div>
         <div class="auth-buttons">
-            <button id="login-btn">Login</button>
-            <button id="register-btn">Sign Up</button>
+            <button class="login">Log In</button>
+            <button class="register">Register</button>
         </div>
     </header>
-    
-    <main>
-        <h1>What will you <span class="highlight">plant</span> today?</h1>
+
+    <main class="content">
+        <section class="intro">
+            <div class="intro-container">
+                <img src="logo_large.png" alt="WeFarm" class="intro-logo">
+                <div>
+                    <h2 class="intro-title">Lorem ipsum dolor sit amet</h2>
+                    <p class="intro-text">...............................................................</p>
+                    <p class="intro-text">...............................................................</p>
+                    <p class="intro-text">.................................</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">What will you <span class="highlight">plant</span> today?</h2>
         
-        <div class="container">
-            <div class="left">
-                <img src="left-container.png" alt="Product images">
+        <div class="grid-container">
+            <div class="card product-cards"> <!-- Product Cards -->
+                <p>Product List</p>
             </div>
-            <div class="center">
-                <img src="calendar.png" alt="Calendar and Tracker">
+            <div class="card tracker"> <!-- Tracker Section -->
+                <p>Tracker</p>
             </div>
-            <div class="right">
-                <img src="guides.png" alt="Guides">
+            <div class="card guides"> <!-- Guides Section -->
+                <h3 class="guide-title">Guides</h3>
+                <p class="guide-text">Lorem ipsum dolor sit amet</p>
             </div>
         </div>
     </main>
