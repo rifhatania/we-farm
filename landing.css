@@ -20,6 +20,10 @@ header {
     cursor: pointer;
 }
 
+.logo img {
+    height: 100px;
+}
+
 .login {
     background-color: transparent;
     border: 2px solid #000;
