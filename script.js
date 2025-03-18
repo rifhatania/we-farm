@@ -1,10 +1,10 @@
 // Handle Landing Page
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById(".login").addEventListener("click", function () {
+    document.querySelector(".login").addEventListener("click", function () {
         window.location.href = "login.html";
     });
 
-    document.getElementById(".register").addEventListener("click", function () {
+    document.querySelector(".register").addEventListener("click", function () {
         window.location.href = "signup.html";
     });
 });
