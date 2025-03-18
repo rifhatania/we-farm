@@ -86,10 +86,20 @@ body {
     background-color: #E5B961;
 }
 
+.product-cards:hover {
+    transform: scale(1.05);
+}
+
 .tracker {
     background-color: #d1d5db;
+}
+.tracker:hover {
+    transform: scale(1.05);
 }
 
 .guide-title {
     font-weight: bold;
+}
+.guide-title:hover {
+    transform: scale(1.05);
 }
