@@ -104,6 +104,9 @@ body {
     transform: scale(1.05);
 }
 
-.card guides img {
-    width: 30px;
+.guides img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin-top: 8px;
 }
