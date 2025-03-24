@@ -103,3 +103,7 @@ body {
 .guide-title:hover {
     transform: scale(1.05);
 }
+
+.card product-cards img {
+    width: 150px;
+}
