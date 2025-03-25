@@ -85,28 +85,36 @@ body {
     background-color: #E5B961;
 }
 
-.product-cards:hover {
+.product-cards:hover, .tracker:hover, .guides:hover {
     transform: scale(1.05);
 }
 
 .tracker {
     background-color: #d1d5db;
 }
-.tracker:hover {
-    transform: scale(1.05);
-}
 
 .container-title {
     font-weight: bold;
 }
 
-.guides:hover {
-    transform: scale(1.05);
+.guides {
+    background-color: #B58F47;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.guides h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
 }
 
 .guides img {
-    width: 100px;
+    width: 100%;
+    max-width: 400px;
     height: auto;
-    display: block;
-    margin-top: 8px;
+    margin-top: 16px;
 }
