@@ -23,6 +23,15 @@ document.getElementById("loginForm")?.addEventListener("submit", function(event)
     } else {
         alert("Masukkan nomor HP dan password!");
     }
+
+    function togglePassword() {
+        let passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
 });
 
 
@@ -50,6 +59,15 @@ document.getElementById("signupForm")?.addEventListener("submit", function(event
             alert("Password tidak cocok! Coba lagi.");
         } else {
             alert("Registrasi berhasil!");
+        }
+    }
+
+    function togglePassword() {
+        let passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
         }
     }
 });
