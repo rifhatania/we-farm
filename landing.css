@@ -69,47 +69,73 @@ body {
     color: #E5B961;
 }
 
+/* Grid Layout */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1.2fr 1fr;
     gap: 16px;
     margin-top: 24px;
+    padding: 0 20px;
+    align-items: stretch;
 }
 
+/* Card Styling */
 .card {
-    padding: 16px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.product-cards, .guides {
-    background-color: #E5B961;
+/* Product Recommendation Section */
+.product-cards {
+    background-color: #C47F36;
+    color: white;
 }
 
-.product-cards:hover, .tracker:hover, .guides:hover {
+.product-cards .container-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.product-cards:hover,
+.tracker:hover,
+.guides:hover {
     transform: scale(1.05);
 }
 
+.product-cards img {
+    display: block;
+    max-width: 60%;
+    height: auto;
+    margin: 16px auto;
+}
+
+/* Tracker Section */
 .tracker {
     background-color: #d1d5db;
+    text-align: center;
+    padding: 24px;
+}
+
+.tracker .container-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
 }
 
 .tracker img {
     display: block;
-    width: 30;
     max-width: 50%;
-    height: 50;
-    margin: 16px auto 0;
+    height: auto;
+    margin: 16px auto;
 }
 
-.container-title {
-    font-weight: bold;
-}
-
+/* Guides Section */
 .guides {
-    background-color: #E5B961; 
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #E5B961;
+    padding: 24px;
+    border-radius: 12px;
     text-align: left;
 }
 
@@ -121,12 +147,7 @@ body {
 
 .guides img {
     display: block;
-    width: 30;
-    max-width: 50%;
-    height: 50;
-    margin: 16px auto 0;
-}
-
-.guide-text {
-    margin-bottom: 0;
+    max-width: 60%;
+    height: auto;
+    margin: 16px auto;
 }
