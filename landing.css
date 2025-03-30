@@ -93,6 +93,14 @@ body {
     background-color: #d1d5db;
 }
 
+.tracker img {
+    display: block;
+    width: 30;
+    max-width: 50%;
+    height: 50;
+    margin: 16px auto 0;
+}
+
 .container-title {
     font-weight: bold;
 }
