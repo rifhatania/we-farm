@@ -114,6 +114,24 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
         },
+        "Cabai Keriting": {
+            steps: [
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
+            ],
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+        },
+        "Cabai Gendot": {
+            steps: [
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
+            ],
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+        },
         "Tomat Sayur": {
             steps: [
                 "Gunakan pot dengan kedalaman minimal 30 cm...",
@@ -122,8 +140,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Panen setelah 2-3 bulan..."
             ],
             products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+        },
+        "Tomat Ceri": {
+            steps: [
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
+            ],
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+        },
+        "Tomat Hijau": {
+            steps: [
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
+            ],
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+        },
+        "Terong Putih": {
+            steps: [
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
+            ],
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+        },
+        "Terong Ungu": {
+            steps: [
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
+            ],
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
         }
-
     };
 
     plantCards.forEach(card => {
@@ -194,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (plantName) {
         document.querySelector(".plant-details h3").textContent = plantName;
 
-        // Contoh data tanaman
+        // data tanaman
         const plantData = {
             "Cabai Rawit": {
                 start: "15/02/2025",

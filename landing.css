@@ -146,9 +146,14 @@ body {
     color: #333;
 }
 
+.guides p {
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
 .guides img {
     display: block;
     max-width: 60%;
     height: auto;
-    margin: 16px auto;
+    margin: 14px auto;
 }
