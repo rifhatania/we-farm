@@ -90,7 +90,8 @@ body {
 /* Product Recommendation Section */
 .product-cards {
     background-color: #C47F36;
-    color: white;
+    text-align: center;
+    color: #F5F6F7;
 }
 
 .product-cards .container-title {
@@ -133,10 +134,10 @@ body {
 
 /* Guides Section */
 .guides {
+    text-align: center;
     background-color: #E5B961;
     padding: 24px;
     border-radius: 12px;
-    text-align: left;
 }
 
 .guides h3 {
