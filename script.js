@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("loginForm")?.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const phone = document.getElementById("phone").value;
+    const phone = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     if (phone && password) {
         localStorage.setItem("isLoggedIn", true);
         window.location.href = "home.html";
     } else {
-        alert("Masukkan nomor HP dan password!");
+        alert("Masukkan username dan password!");
     }
 });
 
@@ -38,12 +38,12 @@ function togglePassword() {
 document.getElementById("signupForm")?.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
+    const name = document.getElementById("username").value;
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    if (name && phone && email && password) {
+    if (username && phone && email && password) {
         alert("Registrasi berhasil! Silakan login.");
         window.location.href = "login.html";
     } else {
@@ -98,21 +98,21 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         "Cabai Merah": {
             steps: [
-                "Siapkan pot yang memiliki lubang drainase. Isi pot dengan media tanam sampai menyisakan 5-10 cm dari bibir pot.",
-                "Sebarkan biji cabai merah dengan jarak 5-10 cm diatas media tanam.",
-                "Siram bibit cabai dengan semprotan tanaman 2 kali sehari (pagi dan sore).",
-                "Bibit cabai bisa dipindahkan ke lahan ketika sudah tumbuh 5-6 helai daun (30-35 hari)."
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
             ],
             products: ["Pot Besar", "Pupuk Organik", "Bibit Cabai Merah"]
         },
         "Cabai Hijau": {
             steps: [
-                "Gunakan pot dengan kedalaman minimal 30 cm...",
-                "Siram secara teratur, jangan sampai kering...",
-                "Pangkas daun yang tidak perlu...",
-                "Panen setelah 2-3 bulan..."
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Cabai Keriting"]
         },
         "Cabai Keriting": {
             steps: [
@@ -134,10 +134,10 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         "Tomat Sayur": {
             steps: [
-                "Gunakan pot dengan kedalaman minimal 30 cm...",
-                "Siram secara teratur, jangan sampai kering...",
-                "Pangkas daun yang tidak perlu...",
-                "Panen setelah 2-3 bulan..."
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet",
+                "lorem ipsum dolor sit amet"
             ],
             products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
         },
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Terong Putih"]
         },
         "Terong Ungu": {
             steps: [
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Terong Ungu"]
         }
     };
 
@@ -244,14 +244,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     const plantName = params.get("plant");
 
+    function getFormattedDate(date) {
+        return date.toLocaleDateString("id-ID");
+    }
+    
+    function addMonths(date, months) {
+        let newDate = new Date(date);
+        newDate.setMonth(newDate.getMonth() + months);
+        return newDate;
+    }
+    
+    const today = new Date();
+
     if (plantName) {
         document.querySelector(".plant-details h3").textContent = plantName;
 
         // data tanaman
         const plantData = {
             "Cabai Rawit": {
-                start: "15/02/2025",
-                estimated: "20/05/2025",
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
                 image: "Cabai Rawit.jpeg",
                 targets: [
                     "Day 1-7: Muncul akar kecil",
@@ -260,9 +273,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 ]
             },
             "Tomat Sayur": {
-                start: "10/03/2025",
-                estimated: "15/06/2025",
-                image: "Tomat Sayur.jpeg",
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Tomat Sayur.jpg",
                 targets: [
                     "Day 1-5: Benih mulai berkecambah",
                     "Day 6-14: Tumbuh daun pertama",
@@ -271,7 +285,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        // Update detail tanaman kalau ada datanya
         if (plantData[plantName]) {
             const plantInfo = plantData[plantName];
             document.querySelector(".plant-info img").src = plantInfo.image;
