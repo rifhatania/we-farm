@@ -35,42 +35,84 @@ function togglePassword() {
 }
 
 // Handle Sign Up
-document.getElementById("signupForm")?.addEventListener("submit", function(event) {
-    event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("signupForm");
+    if (!form) return;
 
-    const name = document.getElementById("username").value;
-    const phone = document.getElementById("phone").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Loading...";
 
-    if (!name || !phone || !email || !password || !confirmPassword) {
-        alert("Harap isi semua field!");
-        return;
-    }
+        // Get form values
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (password !== confirmPassword) {
-        alert("Password tidak cocok! Coba lagi.");
-        return;
-    }
+        // Validation
+        if (!validateForm(name, phone, email, password, confirmPassword)) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Sign Up";
+            return;
+        }
 
-    alert("Registrasi berhasil! Silakan login.");
-    window.location.href = "login.html";
+        // Simulate API call (replace with actual fetch())
+        setTimeout(() => {
+            alert("Sign up successful! Redirecting to login...");
+            form.reset();
+            window.location.href = "login.html";
+        }, 1000);
+    });
 });
 
+// Toggle password visibility (optimized)
 function togglePassword(inputId, element) {
-    let input = document.getElementById(inputId);
-    let icon = element.querySelector("i");
+    const input = document.getElementById(inputId);
+    const icon = element.querySelector("i");
+    input.type = input.type === "password" ? "text" : "password";
+    icon.setAttribute("data-feather", input.type === "password" ? "eye" : "eye-off");
+    feather.replace();
+}
 
-    if (input.type === "password") {
-        input.type = "text";
-        icon.setAttribute("data-feather", "eye-off");
-    } else {
-        input.type = "password";
-        icon.setAttribute("data-feather", "eye");
+// Validate all fields
+function validateForm(name, phone, email, password, confirmPassword) {
+    // Check empty fields
+    if (!name || !phone || !email || !password || !confirmPassword) {
+        alert("All fields are required!");
+        return false;
     }
 
-    feather.replace();
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Invalid email format!");
+        return false;
+    }
+
+    // Phone validation (min 10 digits)
+    const phoneRegex = /^\d{10,}$/;
+    if (!phoneRegex.test(phone)) {
+        alert("Phone number must be at least 10 digits!");
+        return false;
+    }
+
+    // Password strength (min 8 chars, 1 uppercase, 1 number)
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+        alert("Password must be 8+ chars with 1 uppercase letter and 1 number!");
+        return false;
+    }
+
+    // Confirm password
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    return true;
 }
 
 
