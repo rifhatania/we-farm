@@ -42,25 +42,36 @@ document.getElementById("signupForm")?.addEventListener("submit", function(event
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (username && phone && email && password) {
-        alert("Registrasi berhasil! Silakan login.");
-        window.location.href = "login.html";
-    } else {
+    if (!name || !phone || !email || !password || !confirmPassword) {
         alert("Harap isi semua field!");
+        return;
     }
 
-    function validateSignUp() {
-        let password = document.getElementById("password").value;
-        let confirmPassword = document.getElementById("confirmPassword").value;
-    
-        if (password !== confirmPassword) {
-            alert("Password tidak cocok! Coba lagi.");
-        } else {
-            alert("Registrasi berhasil!");
-        }
+    if (password !== confirmPassword) {
+        alert("Password tidak cocok! Coba lagi.");
+        return;
     }
+
+    alert("Registrasi berhasil! Silakan login.");
+    window.location.href = "login.html";
 });
+
+function togglePassword(inputId, element) {
+    let input = document.getElementById(inputId);
+    let icon = element.querySelector("i");
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.setAttribute("data-feather", "eye-off");
+    } else {
+        input.type = "password";
+        icon.setAttribute("data-feather", "eye");
+    }
+
+    feather.replace();
+}
 
 
 // Handle Home
