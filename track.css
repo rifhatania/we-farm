@@ -44,30 +44,44 @@ main {
     padding: 10px;
     border-radius: 5px;
     width: 25%;
+    text-align: center;
 }
 
 h2 {
     text-align: center;
 }
 
-table {
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #E5B961;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button:hover {
+    background: #D5A43B;
+}
+
+.calendar table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
 }
 
-td, th {
+.calendar td, .calendar th {
     padding: 10px;
 }
 
 .disabled {
     color: #ccc;
-}
-
-.highlight {
-    background: #E5B961;
-    border-radius: 25%;
-    padding: 5px;
 }
 
 .highlight-today {

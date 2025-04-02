@@ -40,6 +40,55 @@ header {
     fill: none;
   }
 
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.drawer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer h2 {
+    margin-bottom: 20px;
+}
+
+.drawer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.drawer ul li {
+    margin-bottom: 15px;
+}
+
+.drawer ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.drawer.open {
+    right: 0;
+}
+  
 .plant-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

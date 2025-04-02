@@ -78,6 +78,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Handle Drawer Home
+document.addEventListener("DOMContentLoaded", function () {
+    const menuIcon = document.getElementById("menuIcon");
+    const drawer = document.getElementById("drawer");
+    const closeDrawer = document.getElementById("closeDrawer");
+
+    menuIcon.addEventListener("click", function () {
+        drawer.classList.add("open");
+    });
+
+    closeDrawer.addEventListener("click", function () {
+        drawer.classList.remove("open");
+    });
+
+    window.addEventListener("click", function (e) {
+        if (!drawer.contains(e.target) && !menuIcon.contains(e.target)) {
+            drawer.classList.remove("open");
+        }
+    });
+});
+
 
 // Handle Guide dan Track
 document.addEventListener("DOMContentLoaded", function () {
@@ -272,11 +293,99 @@ document.addEventListener("DOMContentLoaded", function () {
                     "Day 10-30: Batang mengeras dan muncul 2-4 daun sejati"
                 ]
             },
+            "Cabai Merah": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Cabai Merah.jpeg",
+                targets: [
+                    "Day 1-7: Muncul akar kecil",
+                    "Day 7-10: Daun pertama",
+                    "Day 10-30: Batang mengeras dan muncul 2-4 daun sejati"
+                ]
+            },
+            "Cabai Hijau": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Cabai Hijau.jpg",
+                targets: [
+                    "Day 1-7: Muncul akar kecil",
+                    "Day 7-10: Daun pertama",
+                    "Day 10-30: Batang mengeras dan muncul 2-4 daun sejati"
+                ]
+            },
+            "Cabai Keriting": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Cabai Keriting.jpg",
+                targets: [
+                    "Day 1-7: Muncul akar kecil",
+                    "Day 7-10: Daun pertama",
+                    "Day 10-30: Batang mengeras dan muncul 2-4 daun sejati"
+                ]
+            },
+            "Cabai Gendot": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Cabai Gendot.jpg",
+                targets: [
+                    "Day 1-7: Muncul akar kecil",
+                    "Day 7-10: Daun pertama",
+                    "Day 10-30: Batang mengeras dan muncul 2-4 daun sejati"
+                ]
+            },
             "Tomat Sayur": {
                 start: getFormattedDate(today),
                 growthDuration: 3,
                 estimated: getFormattedDate(addMonths(today, 3)),
                 image: "Tomat Sayur.jpg",
+                targets: [
+                    "Day 1-5: Benih mulai berkecambah",
+                    "Day 6-14: Tumbuh daun pertama",
+                    "Day 15-30: Batang mengeras, siap dipindah"
+                ]
+            },
+            "Tomat Ceri": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Tomat Cri.jpg",
+                targets: [
+                    "Day 1-5: Benih mulai berkecambah",
+                    "Day 6-14: Tumbuh daun pertama",
+                    "Day 15-30: Batang mengeras, siap dipindah"
+                ]
+            },
+            "Tomat Hijau": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Tomat Hijau.jpg",
+                targets: [
+                    "Day 1-5: Benih mulai berkecambah",
+                    "Day 6-14: Tumbuh daun pertama",
+                    "Day 15-30: Batang mengeras, siap dipindah"
+                ]
+            },
+            "Terong Putih": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Tomat Putih.jpg",
+                targets: [
+                    "Day 1-5: Benih mulai berkecambah",
+                    "Day 6-14: Tumbuh daun pertama",
+                    "Day 15-30: Batang mengeras, siap dipindah"
+                ]
+            },
+            "Terong Ungu": {
+                start: getFormattedDate(today),
+                growthDuration: 3,
+                estimated: getFormattedDate(addMonths(today, 3)),
+                image: "Terong Ungu.jpg",
                 targets: [
                     "Day 1-5: Benih mulai berkecambah",
                     "Day 6-14: Tumbuh daun pertama",

@@ -15,31 +15,18 @@
 
     <main>
         <div class="calendar">
-            <h2>Februari</h2>
+            <div class="calendar-header">
+                <button id="prev-month">&#9665;</button>
+                <h2 id="month-year"></h2>
+                <button id="next-month">&#9655;</button>
+            </div>
             <table>
                 <thead>
                     <tr>
-                        <th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
+                        <th>M</th><th>S</th><th>S</th><th>R</th><th>K</th><th>J</th><th>S</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="disabled">26</td><td class="disabled">27</td><td class="disabled">28</td>
-                        <td class="disabled">29</td><td class="disabled">30</td><td class="disabled">31</td><td>1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
-                    </tr>
-                    <tr>
-                        <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td class="highlight">15</td>
-                    </tr>
-                    <tr>
-                        <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
-                    </tr>
-                    <tr>
-                        <td class="highlight-today">23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>1</td>
-                    </tr>
-                </tbody>
+                <tbody id="calendar-body"></tbody>
             </table>
         </div>
 
@@ -79,5 +66,6 @@
         </div>
     </main>
     <script src="script.js"></script>
+    <script src="cal.js"></script>
 </body>
 </html>
