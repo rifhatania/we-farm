@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("loginForm")?.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const phone = document.getElementById("username").value;
+    const phone = document.getElementById("name").value;
     const password = document.getElementById("password").value;
 
     if (phone && password) {
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 start: getFormattedDate(today),
                 growthDuration: 3,
                 estimated: getFormattedDate(addMonths(today, 3)),
-                image: "Tomat Putih.jpg",
+                image: "Terong Putih.jpg",
                 targets: [
                     "Day 1-5: Benih mulai berkecambah",
                     "Day 6-14: Tumbuh daun pertama",

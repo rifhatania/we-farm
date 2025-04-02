@@ -16,13 +16,15 @@
             <h2>Log In</h2>
             <form id="loginForm">
                 <div class="input-group">
-                    <span>👤</span>
-                    <input type="tel" id="username" placeholder="Username" required>
+                    <i data-feather="user"></i>
+                    <input type="text" id="name" placeholder="Username" required>
                 </div>
                 <div class="input-group">
-                    <span>🔒</span>
-                    <input type="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                    <i data-feather="lock"></i>
+                    <input type="password" id="password" placeholder="Password (min 8 chars)" required>
+                    <span class="toggle-password" onclick="togglePassword('password', this)">
+                        <i data-feather="eye"></i>
+                    </span>
                 </div>
                 <a href="#" class="forgot">Forgot Password?</a>
                 <button type="submit" class="login-btn">Log In</button>
@@ -32,6 +34,16 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            feather.replace();
+
+            setTimeout(() => {
+                feather.replace();
+                console.log("Ikon di-render ulang!");
+            }, 100);
+        });
+    </script>
 </body>
 </html>
 

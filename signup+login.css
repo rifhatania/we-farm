@@ -47,10 +47,14 @@ body {
     padding: 10px;
     border-radius: 6px;
     margin: 10px 0;
+    gap: 10px;
 }
 
-.input-group span {
+.input-group i {
     margin-right: 10px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .input-group input {
@@ -107,8 +111,6 @@ p a {
     color: #004d26;
 }
 
-
-
 .home-container {
     text-align: center;
     padding: 50px;
@@ -126,4 +128,15 @@ p a {
 
 #logoutBtn:hover {
     background: #d62828;
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: -30px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
 }
