@@ -105,6 +105,11 @@ body {
     transform: scale(1.05);
 }
 
+.product-cards p {
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
 .product-cards img {
     display: block;
     max-width: 60%;
@@ -123,6 +128,11 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #333;
+}
+
+.tracker p {
+    margin-left: 14px;
+    margin-right: 14px;
 }
 
 .tracker img {
