@@ -463,6 +463,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    const logo = document.querySelector(".logo");
+    if (logo) {
+        logo.addEventListener("click", function () {
+            window.location.href = "home.html";
+        });
+    }
+
+
     // Handle back button
     const backBtn = document.querySelector(".back-btn");
     if (backBtn) {
