@@ -131,6 +131,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#profileIcon").addEventListener("click", function () {
+        window.location.href = "profile.html";
+    });
+});
+
 // Handle Drawer Home
 document.addEventListener("DOMContentLoaded", function () {
     const menuIcon = document.getElementById("menuIcon");
