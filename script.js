@@ -514,3 +514,11 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "login.html";
   });
 })
+
+
+// Handle myTracker
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".main-content").addEventListener("click", function () {
+        window.location.href = "home.html";
+    });
+})

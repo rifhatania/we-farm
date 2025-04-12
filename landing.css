@@ -3,12 +3,12 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.header {
-    background-color: #E5B961;
-    padding: 16px;
+header {
+    background: #E5B961;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 20px;
 }
 
 .logo-container {

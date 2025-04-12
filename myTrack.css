@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  header {
+    background: #E5B961;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+  
+  .left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;
+    margin-right: 10px;
+}
+  
+  .header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+  }
+
+  .feather {
+    width: 50px;
+    height: 30px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+  .lucide {
+    width: 50px;
+    height: 30px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+  
+  .icons i {
+    cursor: pointer;
+    stroke-width: 2;
+  }
+
+  .right-section i {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    padding: 40px 24px;
+  }
+  
+  .add-card {
+    background-color: #f9fbfc;
+    border: 2px dashed #f4c261;
+    border-radius: 10px;
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #666;
+    font-weight: 500;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .add-icon {
+    background-color: #f4c261;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 50%;
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+  }
