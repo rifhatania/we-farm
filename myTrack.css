@@ -65,10 +65,11 @@ body {
     cursor: pointer;
   }
   
-  .main-content {
-    padding: 40px 24px;
+  main.main-content {
+    max-width: 600px;
+    margin: 0 auto;
   }
-  
+
   .add-card {
     background-color: #f9fbfc;
     border: 2px dashed #f4c261;
@@ -93,9 +94,140 @@ body {
     border-radius: 50%;
   }
   
-  .main-content {
+
+#tracked-plants-container {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+#tracked-plants-container h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+/* Styling untuk tanaman yang sudah ditrack */
+.tracked-plant {
+    background-color: #f9fbfc;
+    border: 2px solid #f4c261;
+    border-radius: 10px;
+    padding: 20px 16px;
+    margin-bottom: 15px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 10vh;
-  }
+    gap: 15px;
+    width: 100%;
+    max-width: 600px; /* Tambahkan ini */
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+.tracked-plant:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tracked-plant img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.tracked-plant-info {
+    flex: 1;
+}
+
+.tracked-plant-info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.tracked-plant-info p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Styling untuk modal (tetap sama) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: black;
+}
+
+/* Styling untuk daftar tanaman di modal */
+.plant-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.plant-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.plant-item:hover {
+    background-color: #f4c261;
+    color: white;
+}
+
+.plant-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.plant-item p {
+    margin: 8px 0 0;
+    font-size: 14px;
+}
+
+/* Styling untuk main content */
+.main-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

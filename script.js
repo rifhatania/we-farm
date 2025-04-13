@@ -137,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 // Handle Drawer Home
 document.addEventListener("DOMContentLoaded", function () {
     const menuIcon = document.getElementById("menuIcon");
@@ -174,7 +175,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Siram bibit cabai dengan semprotan tanaman 2 kali sehari (pagi dan sore).",
                 "Bibit cabai bisa dipindahkan ke lahan ketika sudah tumbuh 5-6 helai daun (30-35 hari)."
             ],
-            products: ["Pot Tanaman", "Kompos Organik", "Bibit Cabai Rawit"]
+            products: ["Pot Tanaman", "Kompos Organik", "Bibit Cabai Rawit"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                },
+                {
+                    user: "Rifha",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Cabai Merah": {
             steps: [
@@ -183,7 +194,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Cabai Merah"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Cabai Merah"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Cabai Hijau": {
             steps: [
@@ -192,7 +209,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Cabai Keriting"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Cabai Keriting"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Cabai Keriting": {
             steps: [
@@ -201,7 +224,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Cabai Gendot": {
             steps: [
@@ -210,7 +239,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Tomat Sayur": {
             steps: [
@@ -219,7 +254,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Tomat Ceri": {
             steps: [
@@ -228,7 +269,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Tomat Hijau": {
             steps: [
@@ -237,7 +284,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Tomat"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Terong Putih": {
             steps: [
@@ -246,7 +299,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Terong Putih"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Terong Putih"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         },
         "Terong Ungu": {
             steps: [
@@ -255,7 +314,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "lorem ipsum dolor sit amet",
                 "lorem ipsum dolor sit amet"
             ],
-            products: ["Pot Besar", "Pupuk Organik", "Bibit Terong Ungu"]
+            products: ["Pot Besar", "Pupuk Organik", "Bibit Terong Ungu"],
+            experiences: [
+                {
+                    user: "Lena",
+                    text: "Lorem Ipsum Dolor sit Amet"
+                }
+            ]
         }
     };
 
@@ -268,9 +333,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 let stepsHTML = guide.steps.map((step, index) =>
                     `<div class="step"><b>${index + 1}.</b> ${step}</div>`
                 ).join("");
-
+        
                 let productsHTML = guide.products.map(product =>
-                    `<li>${product}</li>`
+                    `<li><a href="https://shopee.co.id/search?keyword=${encodeURIComponent(product)}" target="_blank">${product}</a></li>`
                 ).join("");
 
                 guideModal.innerHTML = `
@@ -281,7 +346,18 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="modal-body">
                             <div class="guide-steps">
                                 <h2>${plantName}</h2>
-                                <div class="steps">${stepsHTML}</div>
+                                <div class="scrollable-content">
+                                    <div class="steps">${stepsHTML}</div>
+                                    <div class="experiences-section">
+                                        <h3>Other Experience</h3>
+                                        ${guide.experiences.map(exp => `
+                                            <div class="experience-card">
+                                                <div class="experience-user">${exp.user}</div>
+                                                <div class="experience-text">${exp.text}</div>
+                                            </div>
+                                        `).join("")}
+                                    </div>
+                                </div>
                             </div>
                             <div class="guide-products">
                                 <h3>Product Recommendation:</h3>
@@ -496,29 +572,206 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Handle profile
 document.addEventListener("DOMContentLoaded", function () {
+    // Logout Modal
     const logoutBtn = document.querySelector('.menu-item:last-child');
-    const modal = document.getElementById('logoutModal');
+    const logoutModal = document.getElementById('logoutModal');
     const confirmBtn = document.getElementById('confirmLogout');
     const cancelBtn = document.getElementById('cancelLogout');
 
     logoutBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        modal.style.display = 'flex';
-  });
+        logoutModal.style.display = 'flex';
+    });
 
     cancelBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-  });
+        logoutModal.style.display = 'none';
+    });
 
     confirmBtn.addEventListener('click', () => {
         window.location.href = "login.html";
-  });
-})
+    });
+
+    // Avatar Upload
+    const avatarUpload = document.getElementById('avatarUpload');
+    const userAvatar = document.getElementById('userAvatar');
+    const defaultAvatar = document.getElementById('defaultAvatar');
+
+    avatarUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                userAvatar.src = event.target.result;
+                userAvatar.style.display = 'block';
+                defaultAvatar.style.display = 'none';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Edit Profile Modal
+    const editProfileBtn = document.getElementById('editProfileBtn');
+    const editProfileModal = document.getElementById('editProfileModal');
+    const saveProfileBtn = document.getElementById('saveProfile');
+    const cancelEditBtn = document.getElementById('cancelEdit');
+    const userName = document.getElementById('userName');
+    const userEmail = document.getElementById('userEmail');
+    const userPhone = document.getElementById('userPhone');
+    const userAddress = document.getElementById('userAddress');
+    const editName = document.getElementById('editName');
+    const editEmail = document.getElementById('editEmail');
+    const editPhone = document.getElementById('editPhone');
+    const editAddress = document.getElementById('editAddress');
+
+    editProfileBtn.addEventListener('click', () => {
+        // Fill the form with current values
+        editName.value = userName.textContent;
+        editEmail.value = userEmail.textContent;
+        editPhone.value = userPhone.textContent;
+        editAddress.value = userAddress.textContent;
+        editProfileModal.style.display = 'flex';
+    });
+
+    cancelEditBtn.addEventListener('click', () => {
+        editProfileModal.style.display = 'none';
+    });
+
+    saveProfileBtn.addEventListener('click', () => {
+        // Update the profile with new values
+        userName.textContent = editName.value;
+        userEmail.textContent = editEmail.value;
+        userPhone.textContent = editPhone.value;
+        userAddress.textContent = editAddress.value;
+        editProfileModal.style.display = 'none';
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === logoutModal) {
+            logoutModal.style.display = 'none';
+        }
+        if (e.target === editProfileModal) {
+            editProfileModal.style.display = 'none';
+        }
+    });
+
+    feather.replace();
+});
 
 
 // Handle myTracker
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".main-content").addEventListener("click", function () {
-        window.location.href = "home.html";
+// Fungsi untuk menampilkan tanaman yang sudah ditrack dari localStorage
+// Array untuk menyimpan tanaman yang dipilih (hanya di memory)
+let trackedPlants = [];
+
+// Fungsi untuk menampilkan tanaman
+function displayTrackedPlants() {
+    const container = document.getElementById('tracked-plants');
+    container.innerHTML = '';
+    
+    if (trackedPlants.length === 0) {
+        container.innerHTML = '<p class="empty-message">Belum ada tanaman yang ditambahkan</p>';
+        return;
+    }
+    
+    trackedPlants.forEach(plant => {
+        const plantElement = document.createElement('div');
+        plantElement.className = 'tracked-plant';
+        plantElement.innerHTML = `
+            <img src="${plant.image}" alt="${plant.name}">
+            <div class="tracked-plant-info">
+                <h3>${plant.name}</h3>
+                <p>⏳ ${plant.duration}</p>
+            </div>
+            <button class="remove-plant">×</button>
+        `;
+        
+        // Navigasi ke track.html saat card diklik
+        plantElement.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('remove-plant')) {
+                window.location.href = `track.html?plant=${encodeURIComponent(plant.name)}`;
+            }
+        });
+        
+        // Tombol hapus
+        const removeBtn = plantElement.querySelector('.remove-plant');
+        removeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            trackedPlants = trackedPlants.filter(p => p.name !== plant.name);
+            displayTrackedPlants();
+        });
+        
+        container.appendChild(plantElement);
     });
-})
+}
+
+// Fungsi untuk menampilkan modal pilihan tanaman
+function showPlantModal() {
+    const modal = document.getElementById('plantModal');
+    modal.style.display = 'block';
+    
+    // Daftar tanaman
+    const plants = [
+        { name: "Cabai Rawit", image: "Cabai Rawit.jpeg", duration: "3-4 Bulan" },
+        { name: "Cabai Merah", image: "Cabai Merah.jpeg", duration: "3-4 Bulan" },
+        { name: "Cabai Hijau", image: "Cabai Hijau.jpg", duration: "3-4 Bulan" },
+        { name: "Cabai Keriting", image: "Cabai Keriting.jpg", duration: "4-5 Bulan" },
+        { name: "Cabai Gendot", image: "Cabai Gendot.jpg", duration: "4-5 Bulan" },
+        { name: "Tomat Sayur", image: "Tomat Sayur.jpg", duration: "2-3 Bulan" },
+        { name: "Tomat Ceri", image: "Tomat Cri.jpg", duration: "2-3 Bulan" },
+        { name: "Tomat Hijau", image: "Tomat Hijau.jpg", duration: "2-3 Bulan" },
+        { name: "Terong Putih", image: "Terong Putih.jpg", duration: "3-4 Bulan" },
+        { name: "Terong Ungu", image: "Terong Ungu.jpg", duration: "2-3 Bulan" }
+    ];
+    
+    const plantList = document.getElementById('plantList');
+    plantList.innerHTML = '';
+    
+    plants.forEach(plant => {
+        const plantItem = document.createElement('div');
+        plantItem.className = 'plant-item';
+        plantItem.innerHTML = `
+            <img src="${plant.image}" alt="${plant.name}">
+            <p>${plant.name}</p>
+        `;
+        
+        plantItem.addEventListener('click', () => {
+            // Tambahkan tanaman ke array
+            trackedPlants.push(plant);
+            // Perbarui tampilan
+            displayTrackedPlants();
+            // Tutup modal
+            modal.style.display = 'none';
+        });
+        
+        plantList.appendChild(plantItem);
+    });
+}
+
+// Inisialisasi saat halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+    // Tombol Add More
+    const addMoreBtn = document.getElementById('addMoreBtn');
+    if (addMoreBtn) {
+        addMoreBtn.addEventListener('click', showPlantModal);
+    }
+    
+    // Tombol close modal
+    const closeModal = document.querySelector('.close-modal');
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            document.getElementById('plantModal').style.display = 'none';
+        });
+    }
+    
+    // Tutup modal ketika klik di luar modal
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('plantModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+    
+    // Tampilkan tanaman yang sudah dipilih (awalnya kosong)
+    displayTrackedPlants();
+});

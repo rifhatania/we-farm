@@ -141,27 +141,95 @@ header {
 
 .modal-content {
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: 90%;
-    max-width: 700px;
+    width: 800px; /* Fixed width */
+    height: 500px; /* Fixed height */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-20px);
-    transition: transform 0.3s ease-in-out;
-}
-
-.guide-modal.show {
     display: flex;
+    flex-direction: column;
 }
 
-.guide-modal.show .modal-content {
-    transform: translateY(0);
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0 10px 0;
 }
 
-.step {
-    margin: 10px 0;
+.modal-body {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    overflow: hidden; /* Prevent inner overflow */
+}
+
+.guide-steps {
+    flex: 1;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Needed for proper scrolling */
+}
+
+.scrollable-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.guide-products {
+    width: 250px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Steps and Experiences combined styling */
+.steps {
+    margin-bottom: 20px;
+}
+
+.experiences-section {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.experience-card {
+    background: #f8f9fa;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border-left: 3px solid #E5B961;
+}
+
+.experience-user {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.experience-text {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #555;
+}
+
+/* Scrollbar styling */
+.scrollable-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: #E5B961;
+    border-radius: 10px;
 }
 
 #closeModal {
@@ -171,46 +239,6 @@ header {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-}
-
-.modal-body {
-    display: flex;
-    gap: 30px;
-    justify-content: space-between;
-}
-
-.guide-steps {
-    flex: 1;
-    text-align: left;
-}
-
-.guide-products {
-    flex: 0.5;
-    background: #fff;
-    padding: 5px;
-    border-radius: 1px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-#bookmarkBtn {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    color: black;
-    transition: color 0.3s;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
 }
 
 #startPlant {

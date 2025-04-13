@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WeFarm Profile</title>
   <link rel="stylesheet" href="profile.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
     <header>
@@ -17,17 +17,26 @@
 
   <main class="container">
     <div class="profile-section">
-      <div class="avatar">
-        <i data-feather="user"></i>
-        <script>
-            feather.replace();
-        </script>
+      <div class="avatar-container">
+        <div class="avatar">
+          <img id="userAvatar" src="" alt="User Avatar">
+          <i data-feather="user" id="defaultAvatar"></i>
+          <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+          <label for="avatarUpload" class="upload-btn">
+            <i data-feather="camera"></i>
+          </label>
+        </div>
       </div>
       <div class="user-card">
-        <h3>User</h3>
-        <p><strong>user123@gmail.com</strong></p>
-        <p>+62 81234567</p>
-        <a href="#" class="add-address">Add Address</a>
+        <div class="user-info">
+          <h3 id="userName">User</h3>
+          <p><strong id="userEmail">user123@gmail.com</strong></p>
+          <p id="userPhone">+62 81234567</p>
+          <p id="userAddress">Add Address</p>
+        </div>
+        <button class="edit-btn" id="editProfileBtn">
+          <i data-feather="edit-2"></i>
+        </button>
       </div>
     </div>
 
@@ -43,6 +52,8 @@
       </a>
     </div>
   </main>
+
+  <!-- Logout Modal -->
   <div class="modal" id="logoutModal">
     <div class="modal-content">
       <p>Are you sure want to log out?</p>
@@ -52,6 +63,39 @@
       </div>
     </div>
   </div>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal" id="editProfileModal">
+    <div class="modal-content edit-modal">
+      <h3>Edit Profile</h3>
+      <form id="profileForm">
+        <div class="form-group">
+          <label for="editName">Name</label>
+          <input type="text" id="editName" required>
+        </div>
+        <div class="form-group">
+          <label for="editEmail">Email</label>
+          <input type="email" id="editEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="editPhone">Phone</label>
+          <input type="tel" id="editPhone" required>
+        </div>
+        <div class="form-group">
+            <label for="editAddress">Address</label>
+            <input type="tel" id="editAddress" required>
+          </div>
+        <div class="modal-buttons">
+          <button type="button" id="saveProfile">Save</button>
+          <button type="button" id="cancelEdit">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    feather.replace();
+  </script>
 </body>
 </html>
