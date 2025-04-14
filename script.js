@@ -412,6 +412,49 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const today = new Date();
 
+    function updateProgress() {
+        const checkboxes = document.querySelectorAll('.target input[type="checkbox"]');
+        const checked = document.querySelectorAll('.target input[type="checkbox"]:checked').length;
+        const total = checkboxes.length;
+        const progress = total > 0 ? (checked / total) * 100 : 0;
+        
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
+        
+        // Check jika semua target selesai
+        if (checked === total && total > 0) {
+            showSuccessModal();
+        }
+    }
+    
+    // Modal sukses
+    function showSuccessModal() {
+        const modal = document.createElement('div');
+        modal.className = 'success-modal';
+        modal.innerHTML = `
+            <div class="success-modal-content">
+                <h3>Tanaman anda berhasil?</h3>
+                <div class="success-modal-buttons">
+                    <button class="success-btn">Berhasil</button>
+                    <button class="fail-btn">Tidak</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        modal.style.display = 'flex';
+        
+        modal.querySelector('.success-btn').addEventListener('click', function() {
+            alert('Selamat! Tanaman Anda berhasil tumbuh dengan baik!');
+            modal.remove();
+        });
+        
+        modal.querySelector('.fail-btn').addEventListener('click', function() {
+            alert('Tanaman Anda gagal tumbuh. Mari coba lagi!');
+            modal.remove();
+        });
+    }
+
     if (plantName) {
         document.querySelector(".plant-details h3").textContent = plantName;
 
@@ -542,6 +585,45 @@ document.addEventListener("DOMContentLoaded", function () {
             plantInfo.targets.forEach(target => {
                 targetList.innerHTML += `<li><input type="checkbox"> ${target}</li>`;
             });
+
+            // Tambahkan progress container
+            const plantDetails = document.querySelector('.plant-details');
+            const progressHTML = `
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress-bar"></div>
+                    </div>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="status-buttons">
+                    <button class="cancel-btn">Batalkan</button>
+                    <button class="fail-btn">Gagal</button>
+                </div>
+            `;
+            plantDetails.insertAdjacentHTML('beforeend', progressHTML);
+            
+            // Event listeners untuk checkbox
+            document.querySelectorAll('.target input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+            
+            // Event listeners untuk tombol status
+            document.querySelector('.cancel-btn')?.addEventListener('click', function() {
+                if (confirm('Apakah Anda yakin ingin membatalkan tracking tanaman ini?')) {
+                    alert('Tracking tanaman dibatalkan.');
+                    window.location.href = "home.html";
+                }
+            });
+            
+            document.querySelector('.fail-btn')?.addEventListener('click', function() {
+                if (confirm('Apakah tanaman ini gagal tumbuh?')) {
+                    alert('Status tanaman diperbarui menjadi gagal.');
+                    window.location.href = "home.html";
+                }
+            });
+            
+            // Inisialisasi progress bar
+            updateProgress();
         }
     }
 
@@ -568,6 +650,58 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Cek kelembapan tanah dan perhatikan hama pada tanaman!");
         });
     }
+
+    // Update progress bar function
+    function updateProgress() {
+        const checkboxes = document.querySelectorAll('.target input[type="checkbox"]');
+        const checked = document.querySelectorAll('.target input[type="checkbox"]:checked').length;
+        const total = checkboxes.length;
+        const progress = total > 0 ? (checked / total) * 100 : 0;
+        
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
+        
+        // Check if all targets are completed
+        if (checked === total && total > 0) {
+            showSuccessModal();
+        }
+    }
+
+    // Success modal
+    function showSuccessModal() {
+        const modal = document.createElement('div');
+        modal.className = 'success-modal';
+        modal.innerHTML = `
+            <div class="success-modal-content">
+                <h3>Tanaman anda berhasil?</h3>
+                <div class="success-modal-buttons">
+                    <button class="success-btn">Berhasil</button>
+                    <button class="fail-btn">Tidak</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        modal.style.display = 'flex';
+        
+        modal.querySelector('.success-btn').addEventListener('click', function() {
+            alert('Selamat! Tanaman Anda berhasil tumbuh dengan baik!');
+            modal.remove();
+        });
+        
+        modal.querySelector('.fail-btn').addEventListener('click', function() {
+            alert('Tanaman Anda gagal tumbuh. Mari coba lagi!');
+            modal.remove();
+        });
+    }
+
+    // Add event listeners to checkboxes
+    document.querySelectorAll('.target input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', updateProgress);
+    });
+
+// Initialize progress bar
+updateProgress();
 });
 
 // Handle profile
@@ -660,8 +794,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Handle myTracker
-// Fungsi untuk menampilkan tanaman yang sudah ditrack dari localStorage
-// Array untuk menyimpan tanaman yang dipilih (hanya di memory)
 let trackedPlants = [];
 
 // Fungsi untuk menampilkan tanaman
@@ -774,4 +906,65 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Tampilkan tanaman yang sudah dipilih (awalnya kosong)
     displayTrackedPlants();
+});
+
+// Di dalam fungsi yang menangani tombol "Berhasil", "Gagal", dan "Batal":
+function saveToHistory(plantName, status) {
+    // Ambil data tanaman yang sedang di-track
+    const plantData = {
+        name: plantName,
+        image: document.querySelector(".plant-info img").src.split('/').pop(),
+        startDate: document.querySelector(".plant-details p:nth-of-type(1)").textContent.replace('Start: ', ''),
+        endDate: new Date().toLocaleDateString("id-ID"),
+        status: status,
+        duration: calculateDuration()
+    };
+    
+    // Ambil history yang sudah ada dari localStorage
+    let history = JSON.parse(localStorage.getItem('plantHistory')) || [];
+    
+    // Tambahkan data baru
+    history.push(plantData);
+    
+    // Simpan kembali ke localStorage
+    localStorage.setItem('plantHistory', JSON.stringify(history));
+}
+
+function calculateDuration() {
+    const startText = document.querySelector(".plant-details p:nth-of-type(1)").textContent.replace('Start: ', '');
+    const startDate = new Date(startText.split('/').reverse().join('-'));
+    const endDate = new Date();
+    
+    const diffMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                      (endDate.getMonth() - startDate.getMonth());
+    
+    if (diffMonths === 0) {
+        const diffDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+        return diffDays + ' hari';
+    } else {
+        return diffMonths + ' bulan';
+    }
+}
+
+// Modifikasi event listener untuk tombol-tombol status:
+document.querySelector('.success-btn')?.addEventListener('click', function() {
+    alert('Selamat! Tanaman Anda berhasil tumbuh dengan baik!');
+    saveToHistory(plantName, 'success');
+    modal.remove();
+    window.location.href = "history.html";
+});
+
+document.querySelector('.fail-btn')?.addEventListener('click', function() {
+    alert('Tanaman Anda gagal tumbuh. Mari coba lagi!');
+    saveToHistory(plantName, 'failed');
+    modal.remove();
+    window.location.href = "history.html";
+});
+
+document.querySelector('.cancel-btn')?.addEventListener('click', function() {
+    if (confirm('Apakah Anda yakin ingin membatalkan tracking tanaman ini?')) {
+        alert('Tracking tanaman dibatalkan.');
+        saveToHistory(plantName, 'cancelled');
+        window.location.href = "history.html";
+    }
 });

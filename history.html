@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Tanaman | WeFarm</title>
+    <link rel="stylesheet" href="track.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Tambahan CSS khusus untuk history */
+        .history-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .history-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .history-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .history-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: #f0f0f0;
+            color: #666;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .history-tab.active {
+            background: #E5B961;
+            color: white;
+        }
+        
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .history-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .history-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .history-info {
+            flex: 1;
+        }
+        
+        .history-info h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .history-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .history-status {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-cancelled {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #666;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo wefarm.png" alt="WeFarm Logo">
+        </div>
+        <div class="icons">
+            <i data-lucide="home" id="homeIcon"></i>
+            <i data-feather="user" id="profileIcon"></i>
+        </div>
+    </header>
+
+    <div class="history-container">
+        <div class="history-header">
+            <h1 class="history-title">History Tanaman</h1>
+        </div>
+        
+        <div class="history-tabs">
+            <div class="history-tab active" data-tab="all">Semua</div>
+            <div class="history-tab" data-tab="success">Berhasil</div>
+            <div class="history-tab" data-tab="failed">Gagal</div>
+            <div class="history-tab" data-tab="cancelled">Batal</div>
+        </div>
+        
+        <div class="history-list" id="historyList">
+            <!-- Data history akan dimuat di sini -->
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+        lucide.createIcons();
+        
+        // Data contoh history (bisa diganti dengan data dari localStorage/database)
+        const plantHistory = [
+            {
+                name: "Cabai Rawit",
+                image: "Cabai Rawit.jpeg",
+                startDate: "15/02/2025",
+                endDate: "20/05/2025",
+                status: "success", // success, failed, cancelled
+                duration: "3 bulan"
+            },
+            {
+                name: "Cabai Merah",
+                image: "Cabai Merah.jpeg",
+                startDate: "10/03/2025",
+                endDate: "15/06/2025",
+                status: "failed",
+                duration: "3 bulan"
+            },
+            {
+                name: "Tomat Sayur",
+                image: "Tomat Sayur.jpg",
+                startDate: "05/01/2025",
+                endDate: "10/02/2025",
+                status: "cancelled",
+                duration: "1 bulan"
+            }
+        ];
+        
+        // Fungsi untuk menampilkan history
+        function displayHistory(filter = 'all') {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = '';
+            
+            const filteredHistory = filter === 'all' 
+                ? plantHistory 
+                : plantHistory.filter(item => item.status === filter);
+            
+            if (filteredHistory.length === 0) {
+                historyList.innerHTML = '<p class="empty-message">Tidak ada data history</p>';
+                return;
+            }
+            
+            filteredHistory.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                
+                // Tentukan kelas status
+                let statusClass = '';
+                let statusText = '';
+                
+                switch(item.status) {
+                    case 'success':
+                        statusClass = 'status-success';
+                        statusText = 'Berhasil';
+                        break;
+                    case 'failed':
+                        statusClass = 'status-failed';
+                        statusText = 'Gagal';
+                        break;
+                    case 'cancelled':
+                        statusClass = 'status-cancelled';
+                        statusText = 'Batal';
+                        break;
+                }
+                
+                historyItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="history-info">
+                        <h3>${item.name}</h3>
+                        <p>${item.startDate} - ${item.endDate} (${item.duration})</p>
+                    </div>
+                    <div class="history-status ${statusClass}">${statusText}</div>
+                `;
+                
+                historyList.appendChild(historyItem);
+            });
+        }
+        
+        // Fungsi untuk handle tab
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.history-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Hapus active class dari semua tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Tambahkan active class ke tab yang diklik
+                    this.classList.add('active');
+                    
+                    // Filter history berdasarkan tab
+                    const filter = this.getAttribute('data-tab');
+                    displayHistory(filter);
+                });
+            });
+        }
+        
+        // Navigasi ke home
+        document.getElementById('homeIcon').addEventListener('click', function() {
+            window.location.href = 'home.html';
+        });
+        
+        // Navigasi ke profile
+        document.getElementById('profileIcon').addEventListener('click', function() {
+            window.location.href = 'profile.html';
+        });
+        
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            setupTabs();
+            displayHistory(); // Tampilkan semua history secara default
+            
+            // Coba ambil data dari localStorage jika ada
+            const savedHistory = localStorage.getItem('plantHistory');
+            if (savedHistory) {
+                plantHistory = JSON.parse(savedHistory);
+                displayHistory();
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
