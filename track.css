@@ -111,15 +111,6 @@ button:hover {
     width: 150px;
 }
 
-.problem-btn {
-    background: #d9534f;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .target, .daily, .reminder {
     background: white;
     padding: 10px;
@@ -207,4 +198,149 @@ button:hover {
 .success-btn {
     background: #5cb85c;
     color: white;
+}
+
+/* Target item styles */
+.target ul {
+    list-style: none;
+    padding: 0;
+}
+
+.target li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #f8f9fa;
+}
+
+.target-actions {
+    display: none;
+    margin-left: auto;
+    gap: 5px;
+}
+
+.target li:hover .target-actions {
+    display: flex;
+}
+
+.target-status {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.target-status.checked {
+    background: #5cb85c;
+    color: white;
+    border-color: #5cb85c;
+}
+
+.target-status.failed {
+    background: #d9534f;
+    color: white;
+    border-color: #d9534f;
+}
+
+.target-status i {
+    font-size: 12px;
+}
+
+.target-text {
+    flex-grow: 1;
+}
+
+.action-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.success-btn {
+    background: #5cb85c;
+    color: white;
+}
+
+.fail-btn {
+    background: #d9534f;
+    color: white;
+}
+
+.read-article-btn {
+    display: none;
+    background: #f0ad4e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.target-item.locked {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Popup Styles */
+.status-popup {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    display: none;
+}
+
+.status-popup button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    text-align: left;
+}
+
+.target-status {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.target-status.checked {
+    border-color: #5cb85c;
+    color: #5cb85c;
+}
+
+.target-status.failed {
+    border-color: #d9534f;
+    color: #d9534f;
+}
+
+.target-item {
+    position: relative;
+}
+
+.target-item.locked {
+    opacity: 0.6;
+    pointer-events: none;
 }

@@ -1,10 +1,27 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 0;
     line-height: 1.6;
 }
 
-/* Styling untuk versi dengan konten */
+header {
+    background: #E5B961;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;
+    margin-right: 10px;
+}
+
 h1 {
     color: #333;
 }
@@ -14,16 +31,7 @@ h2 {
     margin-top: 20px;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 20px;
-}
 
-li {
-    margin-bottom: 5px;
-}
-
-/* Styling untuk versi kosong */
 .empty-message {
     text-align: center;
     padding-top: 50px;

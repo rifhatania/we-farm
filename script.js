@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Handle Drawer Home
 document.addEventListener("DOMContentLoaded", function () {
+    feather.replace();
     const menuIcon = document.getElementById("menuIcon");
     const drawer = document.getElementById("drawer");
     const closeDrawer = document.getElementById("closeDrawer");
@@ -411,23 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     const today = new Date();
-
-    function updateProgress() {
-        const checkboxes = document.querySelectorAll('.target input[type="checkbox"]');
-        const checked = document.querySelectorAll('.target input[type="checkbox"]:checked').length;
-        const total = checkboxes.length;
-        const progress = total > 0 ? (checked / total) * 100 : 0;
-        
-        document.getElementById('progress-bar').style.width = `${progress}%`;
-        document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
-        
-        // Check jika semua target selesai
-        if (checked === total && total > 0) {
-            showSuccessModal();
-        }
-    }
     
-    // Modal sukses
     function showSuccessModal() {
         const modal = document.createElement('div');
         modal.className = 'success-modal';
@@ -466,9 +451,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 estimated: getFormattedDate(addMonths(today, 3)),
                 image: "Cabai Rawit.jpeg",
                 targets: [
-                    "Day 1-7: Muncul akar kecil",
-                    "Day 7-10: Daun pertama",
-                    "Day 10-30: Batang mengeras dan muncul 2-4 daun sejati"
+                    "Hari 1-7: Muncul akar kecil",
+                    "Hari 8-10: Daun pertama",
+                    "Hari 11-21: Batang menguat dan daun sejati berjumlah 2-4",
+                    "Hari 22-30: Tinggi tanaman 10-15 cm",
+                    "(Pindahkan tanaman ke lahan tanam)",
+                    "Minggu 1-4: Batang bercabang dan daun tumbuh lebat",
+                    "Minggu 5-6: Tunas bunga muncul",
+                    "Minggu 7-10: Bakal buah terbentuk berwarna hijau",
+                    "Minggu 11-12 Buah matang dan siap dipanen"
                 ]
             },
             "Cabai Merah": {
@@ -579,12 +570,145 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".plant-details p:nth-of-type(1)").innerHTML = `<b>Start:</b> ${plantInfo.start}`;
             document.querySelector(".plant-details p:nth-of-type(2)").innerHTML = `<b>Estimated:</b> ${plantInfo.estimated}`;
 
-            // Update target list
+            // target list
             const targetList = document.querySelector(".target ul");
             targetList.innerHTML = "";
-            plantInfo.targets.forEach(target => {
-                targetList.innerHTML += `<li><input type="checkbox"> ${target}</li>`;
+            plantInfo.targets.forEach((target, index) => {
+                targetList.innerHTML += `
+                    <li class="target-item" data-index="${index}">
+                        <div class="target-status"></div>
+                        <span class="target-text">${target}</span>
+                        <div class="status-popup">
+                            <button class="action-btn success-btn">✅ Target Terpenuhi</button>
+                            <button class="action-btn fail-btn">❌ Target Tidak Terpenuhi</button>
+                        </div>
+                        <button class="read-article-btn">Baca Artikel</button>
+                    </li>
+                `;
             });
+
+            // Handle status selection
+            document.querySelectorAll('.target-status').forEach(statusIcon => {
+                statusIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // Jika sudah checked, kembalikan ke netral
+                    if (this.classList.contains('checked')) {
+                        this.classList.remove('checked');
+                        this.innerHTML = '';
+                    } 
+                    // Jika sudah failed, tampilkan popup
+                    else if (this.classList.contains('failed')) {
+                        const popup = this.nextElementSibling.nextElementSibling;
+                        popup.style.display = 'block';
+                    }
+                    // Jika netral, tampilkan popup
+                    else {
+                        const popup = this.nextElementSibling.nextElementSibling;
+                        popup.style.display = 'block';
+                    }
+                    
+                    updateProgress();
+                    updateTargetLocks();
+                });
+            });
+        
+
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.status-popup').forEach(popup => {
+                    popup.style.display = 'none';
+                });
+            });
+
+            // Handle success/fail selection
+            document.querySelectorAll('.success-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const targetItem = this.closest('.target-item');
+                    const statusIcon = targetItem.querySelector('.target-status');
+                    
+                    statusIcon.classList.remove('failed');
+                    statusIcon.classList.add('checked');
+                    statusIcon.innerHTML = '<i data-feather="check"></i>';
+                    
+                    this.closest('.status-popup').style.display = 'none';
+                    feather.replace();
+                    updateProgress();
+                    updateTargetLocks();
+                });
+            });
+            
+            // Handle fail button
+            document.querySelectorAll('.fail-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const targetItem = this.closest('.target-item');
+                    const statusIcon = targetItem.querySelector('.target-status');
+                    
+                    statusIcon.classList.remove('checked');
+                    statusIcon.classList.add('failed');
+                    statusIcon.innerHTML = '<i data-feather="alert-circle"></i>';
+                    
+                    // Tampilkan tombol baca artikel
+                    targetItem.querySelector('.read-article-btn').style.display = 'block';
+                    this.closest('.status-popup').style.display = 'none';
+                    feather.replace();
+                    updateProgress();
+                    updateTargetLocks();
+                });
+            });
+
+            // Handle baca artikel button
+            document.querySelectorAll('.read-article-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const targetText = this.closest('.target-item').querySelector('.target-text').textContent;
+                    let articleUrl = "https://example.com/articles/";
+                    
+                    if (targetText.includes("akar kecil")) articleUrl += "perawatan-akar";
+                    else if (targetText.includes("Daun pertama")) articleUrl += "daun-pertama";
+                    else if (targetText.includes("daun sejati")) articleUrl += "daun-sejati";
+                    
+                    window.open(articleUrl, '_blank');
+                });
+            });
+
+            // Lock targets below failed ones
+            function updateTargetLocks() {
+                const targets = document.querySelectorAll('.target-item');
+                let foundFailed = false;
+                
+                targets.forEach(target => {
+                    if (foundFailed) {
+                        target.classList.add('locked');
+                    } else {
+                        target.classList.remove('locked');
+                        if (target.querySelector('.target-status.failed')) {
+                            foundFailed = true;
+                        }
+                    }
+                });
+            }
+
+            // Update progress function
+            function updateProgress() {
+                const targets = document.querySelectorAll('.target-item');
+                let completed = 0;
+                
+                targets.forEach(target => {
+                    if (target.querySelector('.target-status.checked')) {
+                        completed++;
+                    }
+                });
+                
+                const progress = targets.length > 0 ? (completed / targets.length) * 100 : 0;
+                document.getElementById('progress-bar').style.width = `${progress}%`;
+                document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
+                
+                if (completed === targets.length && targets.length > 0) {
+                    showSuccessModal();
+                }
+            }
 
             // Tambahkan progress container
             const plantDetails = document.querySelector('.plant-details');
@@ -601,11 +725,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
             plantDetails.insertAdjacentHTML('beforeend', progressHTML);
-            
-            // Event listeners untuk checkbox
-            document.querySelectorAll('.target input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', updateProgress);
-            });
             
             // Event listeners untuk tombol status
             document.querySelector('.cancel-btn')?.addEventListener('click', function() {
@@ -624,6 +743,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             // Inisialisasi progress bar
             updateProgress();
+            feather.replace();
         }
     }
 
@@ -634,7 +754,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
     // Handle back button
     const backBtn = document.querySelector(".back-btn");
     if (backBtn) {
@@ -642,66 +761,6 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "home.html";
         });
     }
-
-    // Handle problem button
-    const problemBtn = document.querySelector(".problem-btn");
-    if (problemBtn) {
-        problemBtn.addEventListener("click", function () {
-            alert("Cek kelembapan tanah dan perhatikan hama pada tanaman!");
-        });
-    }
-
-    // Update progress bar function
-    function updateProgress() {
-        const checkboxes = document.querySelectorAll('.target input[type="checkbox"]');
-        const checked = document.querySelectorAll('.target input[type="checkbox"]:checked').length;
-        const total = checkboxes.length;
-        const progress = total > 0 ? (checked / total) * 100 : 0;
-        
-        document.getElementById('progress-bar').style.width = `${progress}%`;
-        document.getElementById('progress-text').textContent = `${Math.round(progress)}%`;
-        
-        // Check if all targets are completed
-        if (checked === total && total > 0) {
-            showSuccessModal();
-        }
-    }
-
-    // Success modal
-    function showSuccessModal() {
-        const modal = document.createElement('div');
-        modal.className = 'success-modal';
-        modal.innerHTML = `
-            <div class="success-modal-content">
-                <h3>Tanaman anda berhasil?</h3>
-                <div class="success-modal-buttons">
-                    <button class="success-btn">Berhasil</button>
-                    <button class="fail-btn">Tidak</button>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        modal.style.display = 'flex';
-        
-        modal.querySelector('.success-btn').addEventListener('click', function() {
-            alert('Selamat! Tanaman Anda berhasil tumbuh dengan baik!');
-            modal.remove();
-        });
-        
-        modal.querySelector('.fail-btn').addEventListener('click', function() {
-            alert('Tanaman Anda gagal tumbuh. Mari coba lagi!');
-            modal.remove();
-        });
-    }
-
-    // Add event listeners to checkboxes
-    document.querySelectorAll('.target input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', updateProgress);
-    });
-
-// Initialize progress bar
-updateProgress();
 });
 
 // Handle profile
@@ -792,6 +851,61 @@ document.addEventListener("DOMContentLoaded", function () {
     feather.replace();
 });
 
+// Handle settings
+document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const passwordModal = document.getElementById('passwordModal');
+    const changePassword = document.getElementById('changePassword'); // Sekarang ini div
+    const passwordForm = document.getElementById('passwordForm');
+    const cancelBt = document.querySelector('.cancel-bt');
+    const backBtn = document.querySelector('.back-btn');
+    
+    // Toggle modal ketika text "Change Password" diklik
+    changePassword.addEventListener('click', function() {
+        passwordModal.style.display = 'block';
+    });
+    
+    // Tombol cancel
+    cancelBt.addEventListener('click', function() {
+        passwordModal.style.display = 'none';
+    });
+    
+    // Handle form submission
+    passwordForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        if (newPassword !== confirmPassword) {
+            alert('New password and confirmation do not match!');
+            return;
+        }
+        
+        console.log('Password change submitted:', { currentPassword, newPassword });
+
+        passwordModal.style.display = 'none';
+        this.reset();
+        alert('Password changed successfully!');
+    });
+    
+    // Back button
+    backBtn.addEventListener('click', function() {
+        window.location.href = 'profile.html';
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === passwordModal) {
+            passwordModal.style.display = 'none';
+        }
+    });
+    
+    const notificationToggle = document.getElementById('notificationToggle');
+    notificationToggle.addEventListener('change', function() {
+        console.log('Notifications:', this.checked ? 'enabled' : 'disabled');
+    });
+});
 
 // Handle myTracker
 let trackedPlants = [];
@@ -868,11 +982,8 @@ function showPlantModal() {
         `;
         
         plantItem.addEventListener('click', () => {
-            // Tambahkan tanaman ke array
             trackedPlants.push(plant);
-            // Perbarui tampilan
             displayTrackedPlants();
-            // Tutup modal
             modal.style.display = 'none';
         });
         
@@ -882,13 +993,11 @@ function showPlantModal() {
 
 // Inisialisasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
-    // Tombol Add More
     const addMoreBtn = document.getElementById('addMoreBtn');
     if (addMoreBtn) {
         addMoreBtn.addEventListener('click', showPlantModal);
     }
     
-    // Tombol close modal
     const closeModal = document.querySelector('.close-modal');
     if (closeModal) {
         closeModal.addEventListener('click', () => {
@@ -896,7 +1005,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Tutup modal ketika klik di luar modal
     window.addEventListener('click', (event) => {
         const modal = document.getElementById('plantModal');
         if (event.target === modal) {
@@ -904,13 +1012,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Tampilkan tanaman yang sudah dipilih (awalnya kosong)
     displayTrackedPlants();
 });
 
-// Di dalam fungsi yang menangani tombol "Berhasil", "Gagal", dan "Batal":
 function saveToHistory(plantName, status) {
-    // Ambil data tanaman yang sedang di-track
     const plantData = {
         name: plantName,
         image: document.querySelector(".plant-info img").src.split('/').pop(),
