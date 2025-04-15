@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard WeFarm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f2f2f2;
+    }
+    .sidebar {
+      background-color: #E1A73B;
+      width: 240px;
+      height: 100vh;
+      padding: 20px;
+      position: fixed;
+      color: #fff;
+    }
+    .sidebar img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+    .sidebar h3 {
+      margin: 0;
+    }
+    .sidebar nav {
+      margin-top: 30px;
+    }
+    .sidebar nav a {
+      display: block;
+      color: #000;
+      padding: 12px;
+      background-color: #f5d98e;
+      margin-bottom: 10px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .main {
+      margin-left: 260px;
+      padding: 40px;
+    }
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    .stat-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      flex: 1;
+    }
+    .chart, .manage, .experience {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .chart canvas {
+      width: 100%;
+    }
+    .manage {
+      text-align: center;
+      border: 2px dashed orange;
+    }
+    .manage button {
+      margin-top: 10px;
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .experience {
+      font-size: 14px;
+    }
+    .experience h3 {
+      margin-top: 0;
+    }
+    .experience-box {
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .experience-box img {
+      width: 32px;
+      height: 32px;
+    }
+    .experience-box-content {
+      flex: 1;
+    }
+    .experience-box-content strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .show-all {
+      text-align: left;
+      padding-top: 10px;
+      font-weight: 600;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Toy_tractor_icon.png" alt="Logo">
+    <h3>Rifha</h3>
+    <p>Admin</p>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Statistik</a>
+      <a href="#">Kelola Data Tanaman</a>
+    </nav>
+  </div>
+  <div class="main">
+    <h2>April 2025</h2>
+    <div class="stats">
+      <div class="stat-box">
+        <div style="font-size: 32px;">355</div>
+        Pengunjung
+      </div>
+      <div class="stat-box">
+        <div style="font-size: 32px;">95</div>
+        Pendaftar
+      </div>
+      <div class="stat-box">
+        <div style="font-size: 32px;">102</div>
+        Pengguna Track
+      </div>
+    </div>
+
+    <div class="chart">
+      <h3>Diagram keberhasilan tracker</h3>
+      <canvas id="trackerChart"></canvas>
+    </div>
+
+    <div class="manage">
+      <h3>Kelola Data Tanaman</h3>
+      <button>+</button>
+    </div>
+
+    <div class="experience">
+      <h3>155 User Experience</h3>
+      <div class="experience-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon">
+        <div class="experience-box-content">
+          <strong>Rifha Tania - Cabai Rawit</strong>
+          <p>Kalau mau nanem cabai rawit, pastikan dapat sinar matahari cukup dan rutin siram secukupnya—jangan kebanyakan biar nggak busuk. Pilih media tanam yang gembur, dan jangan lupa kasih pupuk organik supaya tumbuh subur. Siap-siap juga hadapi hama, jadi rajin cek daunnya</p>
+        </div>
+      </div>
+      <div class="show-all">Show All &gt;</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('trackerChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Berhasil', 'Gagal', 'Batal'],
+        datasets: [{
+          label: 'Jumlah',
+          data: [99, 25, 58],
+          backgroundColor: ['green', 'red', 'orange']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
