@@ -7,8 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".register").addEventListener("click", function () {
         window.location.href = "signup.html";
     });
-});
 
+    document.querySelector(".admin").addEventListener("click", function () {
+        window.location.href = "admin1.html";
+    });
+});
 
 // Handle Login
 document.getElementById("loginForm")?.addEventListener("submit", function(event) {
@@ -180,11 +183,11 @@ document.addEventListener("DOMContentLoaded", function () {
             experiences: [
                 {
                     user: "Lena",
-                    text: "Lorem Ipsum Dolor sit Amet"
+                    text: "Proses penanaman dan perawatan sangat mudah, cukup mengikuti petunjuk dari WeFarm dan serahkan kepada Tuhan untuk hasilnya"
                 },
                 {
                     user: "Rifha",
-                    text: "Lorem Ipsum Dolor sit Amet"
+                    text: "Tidak cocok untuk tanah kering seperti di belakang rumah saya, sehingga tanaman mati di minggu ke 4"
                 }
             ]
         },
@@ -663,7 +666,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const targetText = this.closest('.target-item').querySelector('.target-text').textContent;
-                    let articleUrl = "https://example.com/articles/";
+                    let articleUrl = "https://www.kompas.com/homey/read/2024/03/26/184000276/teknik-budidaya-cabai-rawit-yang-benar ";
                     
                     if (targetText.includes("akar kecil")) articleUrl += "perawatan-akar";
                     else if (targetText.includes("Daun pertama")) articleUrl += "daun-pertama";
