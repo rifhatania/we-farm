@@ -784,7 +784,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     confirmBtn.addEventListener('click', () => {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     });
 
     // Avatar Upload
